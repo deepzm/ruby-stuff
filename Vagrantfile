@@ -19,7 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provider :virtualbox do |vb|
       vb.name = "ruby-stuff-ubuntu"
-      vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "512", "--cpus", "2"]
   end
 
   config.vm.provision :shell, :path => "setupdevbox.sh"
