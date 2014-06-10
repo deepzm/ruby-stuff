@@ -2,7 +2,7 @@
 require 'json'
 
 require 'expensemanager/model/expense'
-require 'expensemanager/resources/jsonresource'
+require 'expensemanager/resources/json_resource'
 
 module ExpenseManager
 	module Resources

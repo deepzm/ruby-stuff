@@ -1,10 +1,6 @@
+# require_relative 'config/boot'
 
-task :doFirst do
-	puts "starting"
-end
+import 'lib/tasks/migrations.rake'
 
-task :run => :doFirst do
-	ruby "./scrap/scrapbook.rb"
-end
 
-task :default => :run
+
