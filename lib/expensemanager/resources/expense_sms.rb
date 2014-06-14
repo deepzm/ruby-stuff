@@ -6,30 +6,29 @@ require 'expensemanager/resources/json_resource'
 
 module ExpenseManager
 	module Resources
-		class Expense < JsonResource
+		class ExpenseSMS < JsonResource
 			def allowed_methods
-		    	["GET", "POST"]
+		    	["GET", "PUT"]
 		  	end
 
 		  	def to_json
 		    	{
-		      		:expenses => Model::Expense.all
+		      		:sms => Model::ExpenseSMS.all
 		    	}.to_json
 		  	end
 
-		  	def create_path
-		    	@id = Model::Expense.next_id
-		    	"/orders/#@id"
+
+		  	def process_post
+		  		Model::ExpenseSMS.create(params)
+		  		true
 		  	end
 
-		  	def post_is_create?
-			    true
-		  	end
-
-			private
 		  	def from_json
-			    order = Model::Expense.new(params).save(@id)
+		  		sms = Model::ExpenseSMS.create(params)
+		  		response.body = sms.to_json
+		  		200
 		  	end
+
 		end
 	end
 end

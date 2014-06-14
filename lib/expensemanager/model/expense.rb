@@ -2,15 +2,12 @@
 module ExpenseManager 
 	module Model
 		class Expense < ActiveRecord::Base
-		  attr_accessor :id, :amount, :card, :description, :transactionType, :transactionDate
 
-		  belongs_to :expense_sms
-
-		  validates :description, {
-	        presence: true,
-	        length: { maximum: 255 }
-	      }
-
-		  
+			belongs_to :expense_sms
+			
+			def to_json(options = {})
+    			%{{"amount":"#@amount", "card":"#@card", "description":"#@description", "transactionType":"#@transactionType", "transactionDate":"#@transactionDate", "id":#@id}}
+  			end
+  		end
 	end
 end

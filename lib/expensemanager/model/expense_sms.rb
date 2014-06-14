@@ -2,10 +2,11 @@
 module ExpenseManager 
 	module Model
 		class ExpenseSMS < ActiveRecord::Base
-			
-			attr_accessor :id, :from, :message
 
 			has_one :expense, dependent: :destroy
+
+			validates :from, presence: true
+			validates :message, presence: true
 
 		end
 	end

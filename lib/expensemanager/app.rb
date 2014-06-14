@@ -1,6 +1,6 @@
 require 'webmachine/adapters/rack'
 
-require 'expensemanager/resources/expense'
+require 'expensemanager/resources/expense_sms'
 
 
 module ExpenseManager
@@ -10,7 +10,7 @@ module ExpenseManager
     end
 
     app.routes do
-      add ["expenses"], Resources::Expense
+      add ["sms"], Resources::ExpenseSMS
       # add ["expenses", :id], Resources::Expense
       add ['trace', '*'], Webmachine::Trace::TraceResource
     end
